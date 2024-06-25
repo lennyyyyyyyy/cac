@@ -10,7 +10,15 @@
 <body>
     <nav class="navbar bg-primary text-light">
         <div class="container-fluid">
-            <h1>Back to nature</h1>
+            <h1>Back To Nature</h1>
+            <?php
+                session_start();
+                if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
+                    echo '<a href="profile.html" class="text-light float-end">' . $_SESSION['name'] . '</a>';
+                } else {
+                    echo '<a href="login.html" class="text-light float-end">Login</a>';
+                }
+            ?>
         </div>
     </nav>
     <div class="container w-100">
@@ -28,7 +36,7 @@
         <div class="container w-100 d-flex my-4 py-4 border-bottom">
             <div class="container text-start">
                 <div class="text-primary fw-bold display-2" id="airpollutiondeaths"></div>
-                <div class="display-6 text-dark"> deaths since you opened the page</div>
+                <div class="fs-3 fw-light text-dark"> deaths since you opened the page</div>
             </div>
             <div class="container text-primary text-end">
                 <div class="fw-bold display-2">8,430,000</div>
@@ -44,13 +52,13 @@
             </div>
             <div class="container text-end">
                 <div class="text-primary fw-bold display-2" id="foodwaste"></div>
-                <div class="display-6 text-dark"> tons wasted since you opened the page</div>
+                <div class="fs-3 fw-light text-dark"> tons wasted since you opened the page</div>
             </div>
         </div>
         <div class="container w-100 d-flex my-4 py-4 border-bottom">
             <div class="container text-start">
                 <div class="text-primary fw-bold display-2" id="deforestation"></div>
-                <div class="display-6 text-dark"> m<sup>2</sup> deforested since you opened the page</div>
+                <div class="fs-3 fw-light text-dark"> m<sup>2</sup> deforested since you opened the page</div>
             </div>
             <div class="container text-primary text-end">
                 <div class="fw-bold display-2">3,740,000</div>
@@ -66,7 +74,7 @@
             </div>
             <div class="container text-end">
                 <div class="text-primary fw-bold display-2" id="plasticwaste"></div>
-                <div class="display-6 text-dark"> tons of waste produced since you opened the page</div>
+                <div class="fs-3 fw-light text-dark"> tons of waste produced since you opened the page</div>
             </div>
         </div>
     </div>
