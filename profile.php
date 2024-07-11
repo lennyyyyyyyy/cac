@@ -4,19 +4,19 @@
         header("Location: login.html");
         exit;
     }
-    $DATABASE_HOST = 'sql5.freesqldatabase.com';
-    $DATABASE_USER = 'sql5715625';
-    $DATABASE_PASS = 'et38IIz7ek';
-    $DATABASE_NAME = 'sql5715625';
+    $DATABASE_HOST = 'sql307.infinityfree.com';
+    $DATABASE_USER = 'if0_36852730';
+    $DATABASE_PASS = '13isDumby';
+    $DATABASE_NAME = 'if0_36852730_backtonature';
     $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
     if (mysqli_connect_errno()) {
         $sqlerr = true;
         exit;
     }
-    $carboncoins = $con->query("SELECT carboncoins FROM users WHERE id = '" . $_SESSION['id'] . "'");
-    $admirecoins = $con->query("SELECT admirecoins FROM users WHERE id = '" . $_SESSION['id'] . "'");
-    $sustaincoins = $con->query("SELECT sustaincoins FROM users WHERE id = '" . $_SESSION['id'] . "'");
-    $unitycoins = $con->query("SELECT unitycoins FROM users WHERE id = '" . $_SESSION['id'] . "'");
+    $carboncoins = $con->query("SELECT carboncoins FROM userinfo WHERE id = '" . $_SESSION['id'] . "'")->fetch_assoc()['carboncoins'];
+    $admirecoins = $con->query("SELECT admirecoins FROM userinfo WHERE id = '" . $_SESSION['id'] . "'")->fetch_assoc()['admirecoins'];
+    $sustaincoins = $con->query("SELECT sustaincoins FROM userinfo WHERE id = '" . $_SESSION['id'] . "'")->fetch_assoc()['sustaincoins'];
+    $unitycoins = $con->query("SELECT unitycoins FROM userinfo WHERE id = '" . $_SESSION['id'] . "'")->fetch_assoc()['unitycoins'];
 ?>
 
 <!DOCTYPE html>
@@ -28,32 +28,34 @@
     <link rel="stylesheet" href="bootstrap.css">
 </head>
 <body class="w-100 h-100">
-    <nav class="navbar bg-primary text-light">
-        <div class="container-fluid">
-            <h1>Back To Nature</h1>
-        </div>
-    </nav>
-    <div class="w-100 d-flex flex-column align-items-center mt-2">
+    <nav></nav>
+    <div class="w-100 d-flex flex-column align-items-center mt-4">
         <div class="text-danger"><?php if (isset($sqlerr) && $sqlerr) { echo "Error fetching user info. Try again later."; } ?></div>
         <h1 class="display-1"><?php echo $_SESSION['name']; ?></h1>
-        <div>
-            <div class="fs-3 fw-light mx-1">
+        <div class="d-flex mx-1 p-2 border border-primary rounded-3">
+            <div class="fs-3 fw-light mx-2">
                 <?php echo $carboncoins; ?>
                 <img class="d-inline-block" style="height: 1em;" src="textures/carboncoin.png"/>
             </div>
-            <div class="fs-3 fw-light mx-1">
+            <div class="fs-3 fw-light mx-2">
                 <?php echo $admirecoins; ?>
                 <img class="d-inline-block" style="height: 1em;" src="textures/admirecoin.png"/>
             </div>
-            <div class="fs-3 fw-light mx-1">
+            <div class="fs-3 fw-light mx-2">
                 <?php echo $sustaincoins; ?>
                 <img class="d-inline-block" style="height: 1em;" src="textures/sustaincoin.png"/>
             </div>
-            <div class="fs-3 fw-light mx-1">
+            <div class="fs-3 fw-light mx-2">
                 <?php echo $unitycoins; ?>
                 <img class="d-inline-block" style="height: 1em;" src="textures/unitycoin.png"/>
             </div>
         </div>
+        <form action="logout.php" method="post">
+        <button type="submit" class="btn btn-danger my-4 p-2 fs-2">Log out</button>
+        </form>
     </div>
+    
 </body>
+<script src="jquery.js"></script>
+<script src="all.js"></script>
 </html>

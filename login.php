@@ -20,8 +20,7 @@
                 if (isset($_GET['signup']))
                     echo '<h6 class="fw-light text-success">Account created successfully!</h6>';
             ?>
-            <h6 class="fw-light text-danger">Incorrect username and/or password</h6>
-            <form action="authenticate.php" method="post" class="w-75">
+            <form action="authenticate.php<?php if (isset($_GET['redirect'])) { echo "?redirect=" . $_GET['redirect']; } ?>" method="post" class="w-75">
                 <div class="form-floating my-2">
                     <input type="text" id="username" name="username" class="form-control" placeholder="Username">
                     <label for="username">Username</label>

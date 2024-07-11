@@ -1,14 +1,14 @@
 <?php
-    $DATABASE_HOST = 'sql5.freesqldatabase.com';
-    $DATABASE_USER = 'sql5715625';
-    $DATABASE_PASS = 'et38IIz7ek';
-    $DATABASE_NAME = 'sql5715625';
+    $DATABASE_HOST = 'sql307.infinityfree.com';
+    $DATABASE_USER = 'if0_36852730';
+    $DATABASE_PASS = '13isDumby';
+    $DATABASE_NAME = 'if0_36852730_backtonature';
     // Try and connect using the info above.
     $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
     if ( mysqli_connect_errno() ) {
         // If there is an error with the connection, stop the script and display the error.
         echo 'Failed to connect to MySQL: ' . mysqli_connect_error();
-        header("Location: login.html?sqlerr=true");
+        header("Location: login.php?sqlerr=true");
         exit;
     }
     // Check if all fields are filled

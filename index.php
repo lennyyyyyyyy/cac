@@ -8,19 +8,7 @@
     
 </head>
 <body>
-    <nav class="navbar bg-primary text-light">
-        <div class="container-fluid">
-            <h1>Back To Nature</h1>
-            <?php
-                session_start();
-                if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
-                    echo '<a href="profile.html" class="text-light float-end">' . $_SESSION['name'] . '</a>';
-                } else {
-                    echo '<a href="login.html" class="text-light float-end">Login</a>';
-                }
-            ?>
-        </div>
-    </nav>
+    <nav></nav>
     <div class="container w-100">
         <div class="container w-100 d-flex my-4 py-4 border-bottom">
             <div class="container text-primary text-start">
@@ -81,5 +69,6 @@
     <script src="jquery.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="index.js"></script>
+    <script src="all.js"></script>
 </body>
 </html>

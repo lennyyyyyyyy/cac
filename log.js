@@ -432,28 +432,28 @@ const rewards = [
         "unit": "project"
     }
 ]
-
 // clear options
 $(".options").html("");
 
 
-function getRewards() {
-    let rewards = [0, 0, 0, 0];
+function getTotal() {
+    let total = [0, 0, 0, 0];
     $(".options").find("input").each((i, el) => {
         let reward = rewards[i];
         let quantity = $(el).val();
-        rewards[0] += reward.carboncoins * quantity;
-        rewards[1] += reward.admirecoins * quantity;
-        rewards[2] += reward.sustaincoins * quantity;
-        rewards[3] += reward.unitycoins * quantity;
+        total[0] += reward.carboncoins * quantity;
+        total[1] += reward.admirecoins * quantity;
+        total[2] += reward.sustaincoins * quantity;
+        total[3] += reward.unitycoins * quantity;
     })
-    return rewards;
+    return total;
 }
 function updateTotal() {
-    $(".total").eq(0).text(rewards[0]);
-    $(".total").eq(1).text(rewards[1]);
-    $(".total").eq(2).text(rewards[2]);
-    $(".total").eq(3).text(rewards[3]);
+    total = getTotal();
+    $(".total").eq(0).text(total[0]);
+    $(".total").eq(1).text(total[1]);
+    $(".total").eq(2).text(total[2]);
+    $(".total").eq(3).text(total[3]);
 }
 
 for (let reward of rewards) {
@@ -492,21 +492,23 @@ for (let reward of rewards) {
 }
 
 $("button").click(() => {
-    rewards = getRewards();
+    total = getTotal();
     $.ajax({
         type: "POST",
         url: "updatecoins.php",
         data: {
-            carboncoins: rewards[0],
-            admirecoins: rewards[1],
-            sustaincoins: rewards[2],
-            unitycoins: rewards[3]
+            carboncoins: total[0],
+            admirecoins: total[1],
+            sustaincoins: total[2],
+            unitycoins: total[3]
         },
         success: (data) => {
             if (data == "success") {
                 $("button").replaceWith("<span class='text-success'>Coins added!</span>")
-            } else {
+            } else if (data == "sqlerr") {
                 $("button").replaceWith("<span class='text-danger'>Error connecting to database. Try again later.</span>")
+            } else {
+                $("button").replaceWith("<span class='text-danger'>File never ran.</span>")
             }
         }
     })

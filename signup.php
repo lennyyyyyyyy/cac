@@ -24,7 +24,7 @@
                 if (isset($_GET['matcherr']))
                     echo '<h6 class="fw-light text-danger">Passwords do not match!</h6>';
             ?>
-            <form action="signup.php" method="post" class="w-75">
+            <form action="signuprequest.php" method="post" class="w-75">
                 <div class="form-floating my-2">
                     <input type="text" id="username" name="username" class="form-control" placeholder="Username">
                     <label for="username">Username</label>
