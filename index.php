@@ -66,9 +66,9 @@
             </div>
         </div>
     </div>
-    <script src="jquery.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="index.js"></script>
-    <script src="all.js"></script>
 </body>
+<script src="jquery.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="index.js"></script>
+<script src="all.js"></script>
 </html>
