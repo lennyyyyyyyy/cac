@@ -1,12 +1,16 @@
 <?php
     session_start();
+    if (!isset($_SESSION['loggedin']) || !$_SESSION['loggedin']) {
+        header('Location: login.php');
+        exit;
+    }
     $DATABASE_HOST = 'sql307.infinityfree.com';
     $DATABASE_USER = 'if0_36852730';
     $DATABASE_PASS = '13isDumby';
     $DATABASE_NAME = 'if0_36852730_backtonature';
     $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
     if (mysqli_connect_errno()) {
-        echo "sqlerr";
+        header("Location: sqlerr.html");
         exit;
     }
     $carboncoins = $con->query("SELECT carboncoins FROM userinfo WHERE id = '" . $_SESSION['id'] . "'")->fetch_assoc()['carboncoins'];

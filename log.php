@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if (!isset($_SESSION['loggedin']) || !$_SESSION['loggedin']) {
+        header('Location: login.php');
+        exit();
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,13 +19,7 @@
     <div class="container w-75 h-75 d-flex flex-column align-items-center bg-light border border-dark rounded-2 py-3 px-2 my-2">
         <h1 class="fw-light my-4">Log your environmental activites!</h1>
         <div class="options overflow-auto" style="height: 50vw"></div>
-        <?php
-            if (isset($_SESSION['loggedin']) && $_SESSION['loggedin']) {
-                echo '<button type="submit" class="btn btn-outline-dark my-4">Good job! You deserve these coins.</button>';
-            } else {
-                echo '<button type="submit" class="btn btn-outline-dark my-4" disabled>Login to earn coins</button>';
-            }
-        ?>
+        <button type="submit" class="btn btn-outline-dark my-4">Good job! You deserve these coins.</button>
         <span class="bg-white p-3 border border-dark fs-1 fw-light">
             <span class="mx-2">
                 <span class="total">0</span>

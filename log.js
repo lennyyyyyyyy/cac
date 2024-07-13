@@ -505,8 +505,6 @@ $("button").click(() => {
         success: (data) => {
             if (data == "success") {
                 $("button").replaceWith("<span class='text-success'>Coins added!</span>")
-            } else if (data == "sqlerr") {
-                $("button").replaceWith("<span class='text-danger'>Error connecting to database. Try again later.</span>")
             } else {
                 $("button").replaceWith("<span class='text-danger'>File never ran.</span>")
             }
