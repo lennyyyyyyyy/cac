@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find Recycling Centers near you</title>
-    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
 </head>
 <body>
     <nav></nav>
@@ -29,9 +29,9 @@
         <p><span class="fw-bold text-primary">Encouragement:</span> It reinforces the habit of recycling and makes you more aware of what can and cannot be recycled.</p>
     </div>
 </body>
-<script src="jquery.js"></script>
+<script src="/js/jquery.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="data.js"></script>
-<script src="map.js"></script>
-<script src="all.js"></script>
+<script src="/js/data.js"></script>
+<script src="/js/map.js"></script>
+<script src="/js/all.js"></script>
 </html>

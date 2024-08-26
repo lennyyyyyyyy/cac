@@ -435,17 +435,14 @@ const rewards = [
 // clear options
 $(".options").html("");
 
-
 function getTotal() {
     let total = [0, 0, 0, 0];
-    $(".options").find("input").each((i, el) => {
-        let reward = rewards[i];
-        let quantity = $(el).val();
-        total[0] += reward.carboncoins * quantity;
-        total[1] += reward.admirecoins * quantity;
-        total[2] += reward.sustaincoins * quantity;
-        total[3] += reward.unitycoins * quantity;
-    })
+    for (let i in rewards) {
+        total[0] += rewards[i].carboncoins * amounts[i];
+        total[1] += rewards[i].admirecoins * amounts[i];
+        total[2] += rewards[i].sustaincoins * amounts[i];
+        total[3] += rewards[i].unitycoins * amounts[i];
+    }
     return total;
 }
 function updateTotal() {
@@ -456,39 +453,35 @@ function updateTotal() {
     $(".total").eq(3).text(total[3]);
 }
 
-for (let reward of rewards) {
-    let choice = document.createElement("div");
-    choice.classList = "d-flex justify-content-center align-items-center p-2 rounded-2 bg-primary my-2";
-    choice.innerHTML = `
-        <h4 class="text-light mx-2 flex-shrink-0">${reward.desc}</h4>
-        <div class="rounded-2 mx-2 flex-shrink-0">
-            <span class="bg-white p-1 rounded-start-2 fs-6 fw-light">
-                <span class="mx-2">
-                    ${reward.carboncoins}
-                    <img class="d-inline-block" src="textures/carboncoin.png"/>
-                </span>
-                <span class="mx-2">
-                    ${reward.admirecoins}
-                    <img class="d-inline-block" src="textures/admirecoin.png"/>
-                </span>
-                <span class="mx-2">
-                    ${reward.sustaincoins}
-                    <img class="d-inline-block" src="textures/sustaincoin.png"/>
-                </span>
-                <span class="mx-2">
-                    ${reward.unitycoins}
-                    <img class="d-inline-block" src="textures/unitycoin.png"/>
-                </span>
-            </span>
-            <span class="bg-light p-1 rounded-end-2 border-start border-dark">per ${reward.unit}</span>
-        </div>
-        <div class="input-group">
-            <input type="number" class="form-control" placeholder="0" min="0" max="100" step="1" oninput="this.value = Math.max(0, Math.min(100, Math.floor(this.value)))">
-            <span class="input-group-text">${reward.unit}s</span>
-        </div>
-    `;
-    $(choice).find("input").on("input", updateTotal)
-    $(".options").append(choice);
+function updateOption() {
+    val = parseInt($("#options").val());
+    if (val == -1) {
+        $("#amount").prop("disabled", true);
+        $("#amount").val(0);
+        $(".each").text(0);
+        $("#unit").text("");
+    } else {
+        $("#amount").prop("disabled", false);
+        $("#amount").val(amounts[val]);
+        $("#amount").off("input");
+        $("#amount").on("input", () => {
+            amounts[val] = parseInt($("#amount").val());
+            updateTotal();
+        });
+        $(".each").eq(0).text(rewards[val].carboncoins);
+        $(".each").eq(1).text(rewards[val].admirecoins);
+        $(".each").eq(2).text(rewards[val].sustaincoins);
+        $(".each").eq(3).text(rewards[val].unitycoins);
+        $("#unit").text("per " + rewards[val].unit);
+    }
+}
+updateOption();
+$("#options").on("change", updateOption);
+
+amounts = [];
+for (let i in rewards) {
+    $("#options").append($(`<option value="${i}">${rewards[i].desc}</option>`));
+    amounts.push(0);
 }
 
 $("button").click(() => {
@@ -510,6 +503,4 @@ $("button").click(() => {
             }
         }
     })
-    
-    
 })

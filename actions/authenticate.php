@@ -1,22 +1,19 @@
 <?php
+    include $_SERVER["DOCUMENT_ROOT"]."/config.php";
     session_start();
-    $DATABASE_HOST = 'sql307.infinityfree.com';
-    $DATABASE_USER = 'if0_36852730';
-    $DATABASE_PASS = '13isDumby';
-    $DATABASE_NAME = 'if0_36852730_backtonature';
     // Try and connect using the info above.
     $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
     if ( mysqli_connect_errno() ) {
         // If there is an error with the connection, stop the script and display the error.
         echo 'Failed to connect to MySQL: ' . mysqli_connect_error();
-        header("Location: login.php?sqlerr=true");
+        header("Location: /pages/login.php?sqlerr=true");
         exit;
     }
     // Now we check if the data from the login form was submitted, isset() will check if the data exists.
     if ( !isset($_POST['username'], $_POST['password']) ) {
         // Could not get the data that should have been sent.
         echo 'Please fill both the username and password fields!';
-        header("Location: login.php?emptyerr=true");
+        header("Location:/pages/login.php?emptyerr=true");
         exit;
     }
     // Prepare our SQL, preparing the SQL statement will prevent SQL injection.
@@ -42,18 +39,18 @@
             if (isset($_GET['redirect'])) {
                 header('Location: ' . $_GET['redirect']);
             } else {
-                header('Location: index.php');
+                header('Location: /pages/index.php');
             }
         } else {
             // Incorrect password
             echo 'Incorrect password!';
-            header("Location: login.php?passerr=true");
+            header("Location: /pages/login.php?passerr=true");
             exit;
         }
     } else {
         // Incorrect username (implies incorrect password)
         echo 'Incorrect username and/or password!';
-        header("Location: login.php?usererr=true");
+        header("Location: /pages/login.php?usererr=true");
         exit;
     }
 

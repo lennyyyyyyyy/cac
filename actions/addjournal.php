@@ -1,16 +1,13 @@
 <?php
+    include $_SERVER["DOCUMENT_ROOT"]."/config.php"; // database info
     session_start();
-    if (!isset($_SESSION['loggedin']) || !$_SESSION['loggedin']) {
-        header('Location: login.php');
+    if (!isset($_SESSION['loggedin']) || !$_SESSION['loggedin']) { // if not logged in redirect to login
+        header('Location: /pages/login.php');
         exit;
     }
-    $DATABASE_HOST = 'sql307.infinityfree.com';
-    $DATABASE_USER = 'if0_36852730';
-    $DATABASE_PASS = '13isDumby';
-    $DATABASE_NAME = 'if0_36852730_backtonature';
     $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
-    if (mysqli_connect_errno()) {
-        header("Location: sqlerr.html");
+    if (mysqli_connect_errno()) { // if error redirect to error page
+        header("Location: /pages/sqlerr.html");
         exit;
     }
     $stmt = $con->prepare("INSERT INTO journalentries (id, date, entry) VALUES (?, ?, ?)");
@@ -19,9 +16,10 @@
     $stmt->execute();
     $stmt->close();
 
+    // add 10 admirecoins for adding a journal entry
     $admirecoins = $con->query("SELECT admirecoins FROM userinfo WHERE id = '" . $_SESSION['id'] . "'")->fetch_assoc()['admirecoins'];
     $admirecoins += 10;
     $con->query("UPDATE userinfo SET admirecoins = $admirecoins WHERE id = '" . $_SESSION['id'] . "'");
 
-    header('Location: journal.php');
+    header('Location: /pages/journal.php'); // redirect back to journal page
 ?>
