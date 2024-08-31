@@ -1,5 +1,5 @@
 loggedin = $("#loggedin").val();
-
+//hi changes 
 function activatePosts() {
     $(".post").each((i, post) => { // for each post
         post = $(post);
