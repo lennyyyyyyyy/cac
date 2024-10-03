@@ -8,8 +8,8 @@ import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
   return (<>
-    <UnauthNavbar/>
     <Router>
+      <UnauthNavbar/>
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="/login" element={<Login/>}/>

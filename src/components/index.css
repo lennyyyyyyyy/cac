@@ -10,17 +10,21 @@ header {
 	align-items: center;
 	padding-top: 20px;
     padding-bottom: 10px;
-	background: rgba(187, 237, 210, 0.7);
+	background: rgba(148, 255, 196, 0.0);
     position: absolute;
     z-index: 10;
     width: 100%;
     top: 0;
+    /* box-shadow: 0 2px 8px #868686; */
 }
+
+/* lighter: 160, 228, 191 */
+/* darker:  75, 202, 132 */
 
 .fader {
     width: 100%;
-    height: 20px;
-    background: linear-gradient(rgb(187, 237, 210, 0.7), rgb(209, 237, 222, 0));
+    height: 16px;
+    background: linear-gradient(rgb(160, 228, 191, 0.7), rgb(209, 237, 222, 0));
     position: absolute;
     z-index: 9;
     top: 78px;
@@ -42,6 +46,14 @@ header {
     text-decoration: none;
 }
 
+.logo-dark {
+    color: rgb(10, 40, 20);
+}
+
+.logo-light {
+    color: rgb(245, 245, 245);
+}
+
 nav {
     order: 2;
     display: flex;
@@ -52,11 +64,17 @@ nav {
 }
 
 .nav-link {
+    display: block;
     position: relative;
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 400;
     text-decoration: none;
     color: rgb(10, 40, 20);
+    padding: 7px 16px;
+    background-color: rgb(225, 225, 225);
+    /* border: 1px solid rgb(160, 228, 191); */
+    border-radius: 20px;
+    transition: 0.3s;
 }
 
 .nav-link::after {
@@ -69,6 +87,10 @@ nav {
     position: relative;
     transition: width .2s ease-out;
     width: 0;
+}
+
+.nav-link:hover {
+    background-color:rgb(160, 228, 191);
 }
 
 .nav-link:hover::after {

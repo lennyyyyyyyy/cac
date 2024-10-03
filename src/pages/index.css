@@ -1,37 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
-.hero-section {
+body {
+  font-family: Nunito;
+}
+
+::selection {
+  background-color: rgb(148, 255, 196, 0.7);
+  /* color: white; */
+}
+
+.sides-section {
     position: relative;
     height: 100vh;
     display: flex;
-    align-items: center;
+    /* align-items: center; */
     justify-content: space-between;
-    padding: 50px;
+    /* padding: 50px; */
     /* background-color: #f4f4f4; */
     overflow: hidden;
+    font-family: Nunito;
   }
   
-  /* Hero content styles */
-  .hero-content {
+  /* sides content styles */
+  .sides-content {
+    margin-top: 30vh;
+    margin-left: 10vw;
     max-width: 600px;
     z-index: 10;
     position: relative;
   }
   
-  .hero-content h1 {
+  .sides-content h1 {
     font-size: 3rem;
     font-weight: 700;
     color: #333;
   }
   
-  .hero-content p {
+  .sides-content p {
     font-size: 1.25rem;
     color: #666;
     margin-top: 20px;
   }
   
   /* Background image styling */
-  .hero-bg {
+  .sides-bg {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -54,3 +66,105 @@
     z-index: 3;
     transform: scaleY(-1);
   }
+
+
+  .img-header {
+    position: relative;
+    height: 80vh;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .overlay-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* display: block; */
+  }
+
+  .overlay-header {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers the text */
+    color: rgb(245, 245, 245); /* Text color */
+    text-align: center;
+    padding: 20px;
+    font-size: 100px;
+    font-weight: 700;
+}
+
+.centered {
+  justify-content: center;
+}
+
+form {
+  margin-top: 6vh;
+  margin-bottom: 6vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form-single-row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  width: 40%;
+}
+
+.form-item-single {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+label {
+  font-size: 18px;
+  margin: 10px;
+}
+
+input:not([type="submit"]) {
+  border: 1px solid #c7c7c7;
+  border-radius: 20px;
+  padding: 12px;
+  width: 100%;
+  margin-bottom: 10px;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  background: whitesmoke;
+}
+
+input:not([type="submit"]):focus, select:focus {
+  border: 1px solid rgb(75, 202, 132);
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
+	-webkit-box-shadow: 0px 0px 4px rgb(75, 202, 132);
+	-moz-box-shadow: 0px 0px 4px rgb(75, 202, 132);
+	box-shadow: 0px 0px 4px rgb(75, 202, 132);
+	outline: none;
+	transition: 0.2s;
+}
+
+input[type="submit"] {
+  display: block;
+  box-sizing: border-box;
+  width: 30%;
+  border-radius: 20px;
+  border: 1px solid #c7c7c7;
+  padding: 8px 10px;
+  font-size: 16px;
+  transition: 0.3s;
+  background-color: rgb(168, 255, 207);
+  margin: 20px;
+}
+
+input[type="submit"]:hover {
+  background-color: rgb(133, 215, 170);
+  cursor: pointer;
+}
+
+input[type="submit"]:focus {
+  transform: translateY(3px);
+}
