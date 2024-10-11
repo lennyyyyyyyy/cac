@@ -108,6 +108,13 @@ form {
 
 .form-single-row {
   display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  width: 40%;
+}
+
+.form-submit-row {
+  display: flex;
   flex-direction: row;
   margin-bottom: 10px;
   width: 40%;
@@ -167,4 +174,27 @@ input[type="submit"]:hover {
 
 input[type="submit"]:focus {
   transform: translateY(3px);
+}
+
+.form-paragraph {
+  color: rgb(32, 195, 105);
+  font-size: 14px;
+  line-height: 16px;
+  margin-left: 16px;
+  margin-bottom: 10px;
+}
+
+.form-info {
+  margin-top: 0;
+  margin-bottom: 4px;
+}
+
+.form-list {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.error-msg {
+  color: rgb(232, 62, 39);
+  text-align: center;
 }
