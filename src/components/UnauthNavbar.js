@@ -4,8 +4,10 @@ import { useLocation } from 'react-router-dom';
 export default function UnauthNavbar() {
     const location = useLocation();
 
+    const darkBG = ["/login", "/signup", "/editprofile"]
+
     const logoClass = () => {
-        return location.pathname === "/" ? 'logo-text logo-dark' : 'logo-text logo-light';
+        return darkBG.includes(location.pathname) ? 'logo-text logo-light' : 'logo-text logo-dark';
     }
 
     return(<>

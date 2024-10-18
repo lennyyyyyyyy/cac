@@ -11,7 +11,7 @@ body {
 
 .sides-section {
     position: relative;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     /* align-items: center; */
     justify-content: space-between;
@@ -21,23 +21,26 @@ body {
     font-family: Nunito;
   }
   
-  /* sides content styles */
   .sides-content {
-    margin-top: 30vh;
-    margin-left: 10vw;
-    max-width: 600px;
+    margin-top: 15vh;
+    margin-left: 7vw;
+    max-width: 43vw;
     z-index: 10;
     position: relative;
   }
   
   .sides-content h1 {
-    font-size: 3rem;
-    font-weight: 700;
+    line-height: 3.8rem;
+    font-size: 3.3rem;
+    font-weight: 800;
     color: #333;
+    margin-top: 7vh;
+    margin-bottom: 5vh;
   }
   
   .sides-content p {
     font-size: 1.25rem;
+    line-height: 2rem;
     color: #666;
     margin-top: 20px;
   }
@@ -49,13 +52,14 @@ body {
     bottom: 0;
     top: 0;
     width: 50%;
-    height: auto;
+    height: 100%;
     background-image: url('../../public/bg-img-desat.png'); /* Replace with your image */
     background-size: cover;
     background-position: center;
     z-index: 1;
   }
-  
+  /* if height:width ratio is greater than 1013/1474, it'll look wrong*/
+
   /* Curve SVG styling */
   .curve-svg {
     position: absolute;
@@ -66,6 +70,17 @@ body {
     z-index: 3;
     transform: scaleY(-1);
   }
+
+  .semicircle {
+    position: fixed;
+    bottom: -8vw;
+    left: 0;
+    width: 17vw; /* Relative to the viewport */
+    height: 14.5vw; /* Half of the width */
+    background-color: #66cc99;
+    border-radius: 50% 50% 0 0;
+    z-index: 1000;
+}
 
 
   .img-header {
