@@ -6,8 +6,8 @@ export default function Home() {
     return (<>
         <section class="sides-section">
             <div class="sides-content">
-                <h1>Back to Nature</h1>
-                <p>Welcome to the homepage...</p>
+                <h1>Join the Movement for a Greener Tomorrow</h1>
+                <p>BackToNature is your platform to unite with others in promoting environmental activism and raising awareness. Together, we can take meaningful steps to protect and restore the planet.</p>
             </div>
             <Waves className="curve-svg"/>
             <div class="sides-bg"></div>
