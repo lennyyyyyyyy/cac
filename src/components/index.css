@@ -96,3 +96,33 @@ nav {
 .nav-link:hover::after {
     width: 100%;
 }
+
+
+
+/* post and comment styles evan change this later */
+.post {
+    border: 1px solid rgb(160, 228, 191);
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: row;
+}
+
+.postvoting {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 1;
+    margin:5px;
+}
+
+.postcontent {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    margin:5px;
+}

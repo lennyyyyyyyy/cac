@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
+import Posts from './pages/Posts';
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/signup" element={<Signup/>}/>
           <Route path="/profile" element={<Profile/>}/>
           <Route path="/editprofile" element={<EditProfile/>}/>
+          <Route path="/posts" element={<Posts/>}/>
         </Routes>
     </Router>
   </>);
