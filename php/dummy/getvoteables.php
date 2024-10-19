@@ -1,15 +1,6 @@
-<!-- 
-fetch('/php/getvoteables.php', {
-    method: 'POST',
-    body: JSON.stringify({
-        postid: 0 if getting all posts, otherwise id of post to get comments of that post,
-    })
-}) 
-returns a list of voteables(posts or comments) sorted by time
-each element has 'id', 'postid', 'title', 'body', 'userid', 'time', 'votes'
--->
 <?php
-    if ($_POST['postid'] == 0) {
+    require 'config.php';
+    if ($post['postid'] == 0) {
         $data = array(
             array(
                 'id' => 1,

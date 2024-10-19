@@ -1,29 +1,29 @@
 import "./index.css";
 import React, { useState, useEffect } from 'react';
 
-export default function Posts() {
-    const [posts, setPosts] = useState(null);
+export default function Post() {
+    const [comments, setComments] = useState(null);
     useEffect(() => {
         const fetchData = async () => {
           const response = await fetch('http://localhost:8000/getvoteables.php', {
                 method: 'POST',
                 body: JSON.stringify({
-                    postid: 0,
+                    postid: 1,
                 })
             });
           const result = await response.json();
-          setPosts(result);
+          setComments(result);
         };
     
         fetchData();
     }, []); // Empty dependency array means this runs once after the component mounts
 
-    if (!posts) {
+    if (!comments) {
         return <div>Loading...</div>;
     }
 
     let stuff = [];
-    for (let i of posts) {
+    for (let i of comments) {
         stuff.push(
             <div className='post' key={i.id}>
                 <div className='postvoting'>
@@ -32,7 +32,6 @@ export default function Posts() {
                     <button>Downvote</button>
                 </div>
                 <div className='postcontent'>
-                    <a href={`./post/${i.id}`}><h1>{i.title}</h1></a>
                     <h2>{i.time}</h2>
                     <p>{i.body}</p>
                 </div>
