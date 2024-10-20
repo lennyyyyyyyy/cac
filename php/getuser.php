@@ -15,7 +15,7 @@ each element has 'id', 'username', 'password', 'carboncoins', 'admirecoins', 'su
         exit('Failed to connect to MySQL: ' . mysqli_connect_error());
     }
     $stmt = $con->prepare("SELECT * FROM userinfo WHERE id = ?");
-    $stmt->bind_param("i", $_POST['id']);
+    $stmt->bind_param("i", $post['id']);
     $stmt->execute();
     $result = $stmt->get_result();
     $data = $result->fetch_all(MYSQLI_ASSOC);

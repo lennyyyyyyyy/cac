@@ -19,7 +19,7 @@ returns a boolean, true for success, false for failure
         exit('Failed to connect to MySQL: ' . mysqli_connect_error());
     }
     $stmt = $con->prepare("INSERT INTO posts (postid, title, body, userid) VALUES (?, ?, ?, ?)");
-    $stmt->bind_param("issi", $_POST['postid'], $_POST['title'], $_POST['body'], $_POST['userid']);
+    $stmt->bind_param("issi", $post['postid'], $post['title'], $post['body'], $post['userid']);
     $stmt->execute();
     $stmt->close();
     echo json_encode(true);

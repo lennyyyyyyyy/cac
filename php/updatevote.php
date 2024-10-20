@@ -17,14 +17,14 @@ returns a boolean, true for success, false for failure
         echo json_encode(false);
         exit('Failed to connect to MySQL: ' . mysqli_connect_error());
     }
-    $query = $con->query("SELECT * FROM votes WHERE voteableid = " . $_POST['voteableid'] . " AND userid = " . $_POST['userid']);
+    $query = $con->query("SELECT * FROM votes WHERE voteableid = " . $post['voteableid'] . " AND userid = " . $post['userid']);
     if ($query->num_rows == 0) {
-        $query = $con->query("INSERT INTO votes (voteableid, userid, vote) VALUES (" . $_POST['voteableid'] . ", " . $_POST['userid'] . ", " . $_POST['vote'] . ")");
-        $query = $con->query("UPDATE voteables SET votes = votes + " . $_POST['vote'] . " WHERE id = " . $_POST['voteableid']);
+        $query = $con->query("INSERT INTO votes (voteableid, userid, vote) VALUES (" . $post['voteableid'] . ", " . $post['userid'] . ", " . $post['vote'] . ")");
+        $query = $con->query("UPDATE voteables SET votes = votes + " . $post['vote'] . " WHERE id = " . $post['voteableid']);
     } else {
         $data = $query->fetch_assoc();
-        $query = $con->query("UPDATE votes SET vote = " . $_POST['vote'] . " WHERE voteableid = " . $_POST['voteableid'] . " AND userid = " . $_POST['userid']);
-        $query = $con->query("UPDATE voteables SET votes = votes + " . ($_POST['vote'] - $data['vote']) . " WHERE id = " . $_POST['voteableid']);
+        $query = $con->query("UPDATE votes SET vote = " . $post['vote'] . " WHERE voteableid = " . $post['voteableid'] . " AND userid = " . $post['userid']);
+        $query = $con->query("UPDATE voteables SET votes = votes + " . ($post['vote'] - $data['vote']) . " WHERE id = " . $post['voteableid']);
     }
     echo json_encode(true);
 ?>

@@ -15,7 +15,7 @@ each element has 'id', 'postid', 'title', 'body', 'userid', 'time', 'votes'
         exit('Failed to connect to MySQL: ' . mysqli_connect_error());
     }
     $stmt = $con->prepare("SELECT * FROM voteables WHERE postid = ?");
-    $stmt->bind_param("i", $_POST['postid']);
+    $stmt->bind_param("i", $post['postid']);
     $stmt->execute();
     $result = $stmt->get_result();
     $data = $result->fetch_all(MYSQLI_ASSOC);

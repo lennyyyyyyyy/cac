@@ -16,7 +16,7 @@ returns a boolean, true for success, false for failure
         exit('Failed to connect to MySQL: ' . mysqli_connect_error());
     }
     $stmt = $con->prepare("INSERT INTO journalentries (id, date, entry) VALUES (?, ?, ?)");
-    $stmt->bind_param("iss", $_POST['id'], date("Y-m-d"), $_POST['text']);
+    $stmt->bind_param("iss", $post['id'], date("Y-m-d"), $post['text']);
     $stmt->execute();
     $stmt->close();
     echo json_encode(true);
