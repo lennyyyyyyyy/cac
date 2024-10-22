@@ -1,11 +1,20 @@
 import "./index.css"
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import React from 'react'
+import { useAuth } from '../AuthProvider';
 
 export default function UnauthNavbar() {
     const location = useLocation();
-    const darkBG = ["/login", "/signup"]
+    const darkBG = ["/editprofile"]
     const logoClass = () => {
         return darkBG.includes(location.pathname) ? 'logo-text logo-light' : 'logo-text logo-dark';
+    }
+
+    const navigate = useNavigate();
+    const { logout } = useAuth();
+    const handleLogout = () => {
+        logout();
+        navigate('/')
     }
 
     return(<>
@@ -15,8 +24,8 @@ export default function UnauthNavbar() {
                     <span className={logoClass()}>BackToNature</span>
                 </a>
                 <nav>
-                    <span className="nav-link-wrapper"><a className="nav-link" href="/login">Login</a></span>
-                    <span className="nav-link-wrapper"><a className="nav-link" href="signup">Sign Up</a></span>
+                    <span className="nav-link-wrapper"><a className="nav-link" href="/profile">Profile</a></span>
+                    <span className="nav-link-wrapper"><div className="nav-link" onClick={handleLogout}>Logout</div></span>
                 </nav>
             </header>
             {/* <div class="fader"></div> */}

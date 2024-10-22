@@ -16,9 +16,14 @@ each element has 'id', 'username', 'password', 'carboncoins', 'admirecoins', 'su
         echo json_encode(false);
         exit('Failed to connect to MySQL: ' . mysqli_connect_error());
     }
-    $stmt = $con->prepare("INSERT INTO userinfo (username, password, carboncoins, admirecoins, sustaincoins, unitycoins) VALUES (?, ?, 0, 0, 0, 0)");
-    $stmt->bind_param("ss", $post['username'], $post['password']);
-    $stmt->execute();
-    $stmt->close();
-    echo json_encode(true);
+    $query = $con->query("SELECT * FROM userinfo WHERE username = '" . $post['username'] . "' AND password = '" . $post['password'] . "'");
+    if ($query->num_rows != 0) {
+        echo json_encode(false);
+    } else {
+        $stmt = $con->prepare("INSERT INTO userinfo (username, password, carboncoins, admirecoins, sustaincoins, unitycoins) VALUES (?, ?, 0, 0, 0, 0)");
+        $stmt->bind_param("ss", $post['username'], $post['password']);
+        $stmt->execute();
+        $stmt->close();
+        echo json_encode(true);
+    }
 ?>

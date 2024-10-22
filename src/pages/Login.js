@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-// import { ReactComponent as Waves } from "./wave-haikei.svg"
+import { useAuth } from '../AuthProvider';
+import { loginApi } from '../api';
 import "./index.css"
 
 export default function Login() {
+    const {login} = useAuth();
     const [formData, setFormData] = useState({ // temporary storage for entered data
         username: '',
         password: ''
@@ -41,14 +43,21 @@ export default function Login() {
         }));
     };
 
-    const handleSubmit = (e) => { // called when entire form is submitted
+    const handleSubmit = async (e) => { // called when entire form is submitted
         e.preventDefault();
         setSubmitted(true);
     
         const newErrors = validateForm();
     
         if (Object.keys(newErrors).length === 0) { // if no errors, send data to backend
-          // TODO: Send signup info to back end and redirect <---------------------------------------
+          const result = await loginApi(formData);
+
+          if (result !== 0) {
+            login(result);
+            window.location.href = '/profile';
+          }
+          else
+            newErrors.submit = 'Username or password is incorrect.';
         }
     };
     
@@ -68,14 +77,19 @@ export default function Login() {
     };
 
     return (<>
-        <div class="img-header">
-            <img class="overlay-img" src="login-bg.png" alt=""></img>
-            <h1 class="overlay-header">Login</h1>
+        <div className="img-header">
+            <img className="overlay-img" src="login-bg.png" alt=""></img>
+            <h1 className="overlay-header">Login</h1>
         </div>
 
         <form onSubmit={handleSubmit}>
-            <div class="form-single-row">
-                <div class="form-item-single">
+            <div className="form-single-row">
+                {errors.submit && (
+                    <span className="error-msg">{errors.submit}</span>
+                )}
+            </div>
+            <div className="form-single-row">
+                <div className="form-item-single">
                     <label>Username</label>
                     <input
                         type="text"
@@ -90,8 +104,8 @@ export default function Login() {
                 )}
             </div>
 
-            <div class="form-single-row">
-                <div class="form-item-single">
+            <div className="form-single-row">
+                <div className="form-item-single">
                     <label>Password</label>
                     <input
                         type="password"
@@ -105,7 +119,7 @@ export default function Login() {
                     <span className="error-msg">{errors.password}</span>
                 )}
             </div>
-            <div class="form-submit-row centered">
+            <div className="form-submit-row centered">
                 <input type="submit" value="Login"></input>
             </div>
         </form>

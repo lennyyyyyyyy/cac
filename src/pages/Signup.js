@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
+import { useAuth } from '../AuthProvider';
+import { loginApi, signupApi } from '../api';
 import "./index.css"
 
 export default function Signup() {
+    const {login} = useAuth();
     const [formData, setFormData] = useState({ // temporarily saving the values user enters
         username: '',
         password: '',
@@ -49,14 +52,26 @@ export default function Signup() {
         }));
     };
 
-    const handleSubmit = (e) => { // called when submit button pressed
+    const handleSubmit = async (e) => { // called when submit button pressed
         e.preventDefault();
         setSubmitted(true);
     
         const newErrors = validateForm();
     
         if (Object.keys(newErrors).length === 0) { // if no errors, send data to back end
-          // TODO: Send signup info to back end and redirect <---------------------------------------
+            const result = await signupApi(formData);
+
+            if (result) {
+                const id = await loginApi(formData);
+                if (id !== 0) {
+                    login(id)
+                    window.location.href = 'profile';
+                }
+                else
+                    newErrors.submit = 'Username or password is incorrect.';
+            }
+            else
+                newErrors.submit = 'Username is already taken.';
         }
     };
     
@@ -87,14 +102,19 @@ export default function Signup() {
 
     // the rest is just html
     return (<>
-        <div class="img-header">
-            <img class="overlay-img" src="signup-bg.png" alt=""></img>
-            <h1 class="overlay-header">Signup</h1>
+        <div className="img-header">
+            <img className="overlay-img" src="signup-bg.png" alt=""></img>
+            <h1 className="overlay-header">Signup</h1>
         </div>
 
         <form onSubmit={handleSubmit}>
-            <div class="form-single-row">
-                <div class="form-item-single">
+            <div className="form-single-row">
+                {errors.submit && (
+                    <span className="error-msg">{errors.submit}</span>
+                )}
+            </div>
+            <div className="form-single-row">
+                <div className="form-item-single">
                     <label>Username</label>
                     <input
                         type="text"
@@ -109,8 +129,8 @@ export default function Signup() {
                 )}
             </div>
 
-            <div class="form-single-row">
-                <div class="form-item-single">
+            <div className="form-single-row">
+                <div className="form-item-single">
                     <label>Password</label>
                     <input
                         type="password"
@@ -137,8 +157,8 @@ export default function Signup() {
                 </div>
             </div>
 
-            <div class="form-single-row">
-                <div class="form-item-single">
+            <div className="form-single-row">
+                <div className="form-item-single">
                     <label>Confirm Password</label>
                     <input
                         type="password"
@@ -152,7 +172,7 @@ export default function Signup() {
                     <span className="error-msg">{errors.passwordConf}</span>
                 )}
             </div>
-            <div class="form-submit-row centered">
+            <div className="form-submit-row centered">
                 <input type="submit" value="Signup"></input>
             </div>
         </form>

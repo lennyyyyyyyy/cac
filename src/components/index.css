@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
+/* TODO: FIX LOGO
+
+Font Family: Barlow semi condensed
+Font color:
+    start: #59A52C
+    end: 
+*/
+
 .nav-wrapper {
     display: flex;
 }
@@ -75,6 +83,7 @@ nav {
     /* border: 1px solid rgb(160, 228, 191); */
     border-radius: 20px;
     transition: 0.3s;
+    cursor: pointer;
 }
 
 .nav-link::after {
