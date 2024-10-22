@@ -2,6 +2,7 @@
 import './App.css';
 import UnauthNavbar from './components/UnauthNavbar';
 import AuthNavbar from './components/AuthNavbar';
+import Footer from "./components/Footer";
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -68,6 +69,7 @@ function App() {
             <Route path="/posts" element={<Posts/>}/>
             <Route path="/post/:id" element={<Post/>}/>
           </Routes>
+          <Footer/>
       </Router>
     </AuthProvider>
   </>);
