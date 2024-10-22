@@ -68,7 +68,7 @@ export default function Signup() {
                     window.location.href = 'profile';
                 }
                 else
-                    newErrors.submit = 'Username or password is incorrect.';
+                    newErrors.submit = 'Something went wrong..';
             }
             else
                 newErrors.submit = 'Username is already taken.';

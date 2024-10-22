@@ -1,41 +1,36 @@
 // TODO: Link this to AUTHORIZED Route <----------------------------------------------------------
 import "./index.css"
 import React, { useState, useEffect } from 'react';
+import { getAccountData } from '../api';
+import { useAuth } from '../AuthProvider'
 
 export default function Profile() {
     const [data, setData] = useState(null);
-    const [loading, setLoading] = useState(true);
+    const [loadingPage, setLoadingPage] = useState(true);
+    const { userId, loading } = useAuth();
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const response = await fetch('http://localhost:8000/getuser.php', {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        id: 1,
-                    }),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
+                const storedData = await getAccountData(userId);
 
-                if (response.ok) {
-                    const result = await response.json(); // assuming the response is in JSON format
-                    setData(result); // Update the state with fetched data
-                } else {
+                if (storedData) {
+                    setData(storedData);
+                }
+                else {
                     console.error("Failed to fetch data");
                 }
             } catch (error) {
                 console.error("Error fetching data:", error);
             } finally {
-                setLoading(false); // Stop loading state
+                setLoadingPage(false);
             }
         }
-
+        
         fetchData();
-    }, []); // Empty dependency array means this runs once when the component mounts
+    }, [userId]);
 
-    if (loading) {
+    if (loadingPage || loading) {
         return <p>Loading...</p>; // Display this while fetching data
     }
 
@@ -45,7 +40,43 @@ export default function Profile() {
 
     return (
         <>
-            <p>Hi, {data.username}</p> {/* Use the fetched data */}
+            <div className="centered-content">
+                <div className="username">{data.username}</div>
+                <a className="profile-button" href="/editprofile">Edit Profile</a>
+
+                <div className="currency-row">
+                    <div className="currency">
+                        <img src="coins/admirecoin.png" alt="Admire Coin"/>
+                        <div className="currency-label">
+                            <span className="bolded">Admire Coins:</span>  {data.admirecoins}
+                        </div>
+                    </div>
+                    <div className="currency">
+                        <img src="coins/carboncoin.png" alt="Carbon Coin"/>
+                        <div className="currency-label">
+                            <span className="bolded">Carbon Coins:</span>  {data.carboncoins}
+                        </div>
+                    </div>
+                </div>
+
+                <div className="currency-row">
+                    <div className="currency">
+                        <img src="coins/sustaincoin.png" alt="Sustain Coin"/>
+                        <div className="currency-label">
+                            <span className="bolded">Sustain Coins:</span>  {data.sustaincoins}
+                        </div>
+                    </div>
+                    <div className="currency">
+                        <img src="coins/unitycoin.png" alt="Unity Coin"/>
+                        <div className="currency-label">
+                            <span className="bolded">Unity Coins:</span>  {data.unitycoins}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="right-semicircle-bottom-left"></div>
+            <div className="left-semicircle-middle-right"></div>
         </>
     );
 }

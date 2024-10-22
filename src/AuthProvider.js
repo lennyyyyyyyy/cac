@@ -10,24 +10,20 @@ export const useAuth = () => {
 
 // AuthProvider component that wraps the app
 export const AuthProvider = ({ children }) => {
-  const [userId, setUserId] = useState(false);
+  const [userId, setUserId] = useState(null);
   const [loading, setLoading] = useState(true); // New loading state
 
   useEffect(() => {
     // Check localStorage for the initial auth status on load
-    const authStatus = localStorage.getItem('userId');
-    if (authStatus) {
-        setUserId(true);
-    }
-    else {
-        setUserId(false);
+    const storedId = localStorage.getItem('userId');
+    if (storedId) {
+        setUserId(storedId);
     }
 
     setLoading(false);
   }, []);
 
   const login = (userData) => {
-    console.log(userData)
     localStorage.setItem('userId', userData);
     setUserId(true);
   };

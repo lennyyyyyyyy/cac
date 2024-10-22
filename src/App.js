@@ -64,8 +64,7 @@ function App() {
             <Route path="/signup" element={<UnProtectedRoute><Signup/></UnProtectedRoute>}/>
 
             <Route path="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
-            <Route path="/profile" element={<Profile/>}/>
-            <Route path="/editprofile" element={<EditProfile/>}/>
+            <Route path="/editprofile" element={<ProtectedRoute><EditProfile/></ProtectedRoute>}/>
             <Route path="/posts" element={<Posts/>}/>
             <Route path="/post/:id" element={<Post/>}/>
           </Routes>

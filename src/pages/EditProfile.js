@@ -1,18 +1,51 @@
-// TOOD: Link this page to the Authorized Route <-------------------------------------------------------
-
-import React, { useState } from 'react';
 import "./index.css"
+import React, { useState, useEffect } from 'react';
+import { editProfileApi, getAccountData } from '../api';
+import { useAuth } from '../AuthProvider'
 
 export default function EditProfile() {
-    // TODO: Get the actual user data from backend
-    const [formData, setFormData] = useState({ // temporary storage
-        username: 'Test User',
-        password: 'qwerty1',
-        passwordConf: '',
-    });
-    
     const [errors, setErrors] = useState({});
     const [submitted, setSubmitted] = useState(false);
+    const [formData, setFormData] = useState({ // temporary storage
+        id: '',
+        username: '',
+        password: '',
+        passwordConf: '',
+    });
+    const [loadingPage, setLoadingPage] = useState(true);
+    const { userId, loading } = useAuth();
+
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const storedData = await getAccountData(userId);
+
+                if (storedData) {
+                    setFormData({
+                        ...storedData,
+                        id: userId
+                    });
+                }
+                else {
+                    console.error("Failed to fetch data");
+                }
+            } catch (error) {
+                console.error("Error fetching data:", error);
+            } finally {
+                setLoadingPage(false);
+            }
+        }
+        
+        fetchData();
+    }, [userId]);
+
+    if (loadingPage || loading) {
+        return <p>Loading...</p>; // Display this while fetching data
+    }
+
+    if (!formData) {
+        return <p>No data found.</p>; // Display this if there's no data
+    }
     
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -52,14 +85,18 @@ export default function EditProfile() {
         }));
     };
 
-    const handleSubmit = (e) => { // called when submitting
+    const handleSubmit = async (e) => { // called when submitting
         e.preventDefault();
         setSubmitted(true);
     
         const newErrors = validateForm();
     
         if (Object.keys(newErrors).length === 0) { // if no errors, send data to back end
-          // TODO: Send updating info to back end and redirect <-------------------------------------------
+            const result = await editProfileApi(formData);
+            if (result)
+                window.location.href = '/profile';
+            else
+                newErrors.submit = 'Change your username or password.';
         }
     };
     
@@ -90,14 +127,14 @@ export default function EditProfile() {
 
     // the rest is just html
     return (<>
-        <div class="img-header">
-            <img class="overlay-img" src="editprofile-bg.png" alt=""></img>
-            <h1 class="overlay-header">Edit Profile</h1>
+        <div className="img-header">
+            <img className="overlay-img" src="editprofile-bg.png" alt=""></img>
+            <h1 className="overlay-header">Edit Profile</h1>
         </div>
 
         <form onSubmit={handleSubmit}>
-            <div class="form-single-row">
-                <div class="form-item-single">
+            <div className="form-single-row">
+                <div className="form-item-single">
                     <label>Username</label>
                     <input
                         type="text"
@@ -112,8 +149,8 @@ export default function EditProfile() {
                 )}
             </div>
 
-            <div class="form-single-row">
-                <div class="form-item-single">
+            <div className="form-single-row">
+                <div className="form-item-single">
                     <label>Password</label>
                     <input
                         type="password"
@@ -140,14 +177,14 @@ export default function EditProfile() {
                 </div>
             </div>
 
-            <div class="form-single-row">
-                <div class="form-item-single">
+            <div className="form-single-row">
+                <div className="form-item-single">
                     <label>Confirm Password</label>
                     <input
                         type="password"
                         placeholder="Confirm Password"
                         name="passwordConf"
-                        value={formData.passwordConf}
+                        defaultValue={formData.passwordConf}
                         onChange={handleChange}
                     />
                 </div>
@@ -155,7 +192,7 @@ export default function EditProfile() {
                     <span className="error-msg">{errors.passwordConf}</span>
                 )}
             </div>
-            <div class="form-submit-row centered">
+            <div className="form-submit-row centered">
                 <input type="submit" value="Update"></input>
             </div>
         </form>

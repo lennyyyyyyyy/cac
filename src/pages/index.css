@@ -10,103 +10,125 @@ body {
 }
 
 .sides-section {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    /* align-items: center; */
-    justify-content: space-between;
-    /* padding: 50px; */
-    /* background-color: #f4f4f4; */
-    overflow: hidden;
-    font-family: Nunito;
-  }
-  
-  .sides-content {
-    margin-top: 15vh;
-    margin-left: 7vw;
-    max-width: 43vw;
-    z-index: 10;
-    position: relative;
-  }
-  
-  .sides-content h1 {
-    line-height: 3.8rem;
-    font-size: 3.3rem;
-    font-weight: 800;
-    color: #333;
-    margin-top: 7vh;
-    margin-bottom: 5vh;
-  }
-  
-  .sides-content p {
-    font-size: 1.25rem;
-    line-height: 2rem;
-    color: #666;
-    margin-top: 20px;
-  }
-  
-  /* Background image styling */
-  .sides-bg {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    width: 50%;
-    height: 100%;
-    background-image: url('../../public/bg-img-desat.png'); /* Replace with your image */
-    background-size: cover;
-    background-position: center;
-    z-index: 1;
-  }
-  /* if height:width ratio is greater than 1013/1474, it'll look wrong*/
-
-  /* Curve SVG styling */
-  .curve-svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    z-index: 3;
-    transform: scaleY(-1);
-  }
-
-  .semicircle {
-    position: fixed;
-    bottom: -8vw;
-    left: 0;
-    width: 17vw; /* Relative to the viewport */
-    height: 14.5vw; /* Half of the width */
-    background-color: #66cc99;
-    border-radius: 50% 50% 0 0;
-    z-index: 1000;
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  /* padding: 50px; */
+  /* background-color: #f4f4f4; */
+  overflow: hidden;
+  font-family: Nunito;
 }
 
+.sides-content {
+  margin-top: 15vh;
+  margin-left: 7vw;
+  max-width: 43vw;
+  z-index: 10;
+  position: relative;
+}
 
-  .img-header {
-    position: relative;
-    height: 80vh;
-    width: 100%;
-    overflow: hidden;
-  }
+.sides-content h1 {
+  line-height: 3.8rem;
+  font-size: 3.3rem;
+  font-weight: 800;
+  color: #333;
+  margin-top: 7vh;
+  margin-bottom: 5vh;
+}
 
-  .overlay-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* display: block; */
-  }
+.sides-content p {
+  font-size: 1.25rem;
+  line-height: 2rem;
+  color: #666;
+  margin-top: 20px;
+}
 
-  .overlay-header {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%); /* Centers the text */
-    color: rgb(245, 245, 245); /* Text color */
-    text-align: center;
-    padding: 20px;
-    font-size: 100px;
-    font-weight: 700;
+/* Background image styling */
+.sides-bg {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background-image: url('../../public/bg-img-desat.png'); /* Replace with your image */
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+}
+/* if height:width ratio is greater than 1013/1474, it'll look wrong*/
+
+/* Curve SVG styling */
+.curve-svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+  z-index: 3;
+  transform: scaleY(-1);
+}
+
+.top-semicircle-bottom-left {
+  position: fixed;
+  bottom: -8vw;
+  left: 0;
+  width: 17vw; /* Relative to the viewport */
+  height: 14.5vw; /* Half of the width */
+  background-color: #66cc99;
+  border-radius: 50% 50% 0 0;
+  z-index: 1000;
+}
+
+.right-semicircle-bottom-left {
+  position: absolute;
+  bottom: -0.6vw;
+  left: -10vw;
+  width: 17.5vw; /* Relative to the viewport */
+  height: 16vw; /* Half of the width */
+  background-color: #fce097;
+  border-radius: 50% 50% 50% 50%;
+  z-index: 1000;
+}
+
+.left-semicircle-middle-right {
+  position: absolute;
+  top: 50vh;
+  right: 0;
+  transform: translate(0, -50%);
+  height: 16vw;
+  width: 8vw;
+  border-radius: 11vw 0 0 11vw;
+  background-color: #96e5ff;
+  z-index: 1000;
+}
+
+.img-header {
+  position: relative;
+  height: 80vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+.overlay-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* display: block; */
+}
+
+.overlay-header {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Centers the text */
+  color: rgb(245, 245, 245); /* Text color */
+  text-align: center;
+  padding: 20px;
+  font-size: 100px;
+  font-weight: 700;
 }
 
 .centered {
@@ -212,4 +234,76 @@ input[type="submit"]:focus {
 .error-msg {
   color: rgb(232, 62, 39);
   text-align: center;
+}
+
+
+
+.centered-content {
+  margin-top: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.username {
+  font-size: 40px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 4vh;
+}
+
+.profile-button {
+  display: block;
+  box-sizing: border-box;
+  width: 25vw;
+  border-radius: 20px;
+  border: 1px solid #c7c7c7;
+  padding: 8px 10px;
+  font-size: 18px;
+  transition: 0.3s;
+  background-color: #cbf1fd;
+  margin-top: 0px;
+  margin-bottom: 12vh;
+  text-decoration: none;
+  text-align: center;
+  color: rgb(10, 40, 20);
+}
+
+.profile-button:hover {
+  background-color: #abccd6;
+  cursor: pointer;
+}
+
+.profile-button:focus {
+  transform: translateY(3px);
+}
+
+.currency-row {
+  display: flex;
+  justify-content: space-between;
+  width: 45vw;
+  margin-bottom: 8vh;
+}
+
+.currency {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.currency img {
+  width: 65px;
+  height: 65px;
+  margin-bottom: 10px;
+}
+
+.currency-label {
+  font-size: 19px;
+  font-weight: normal;
+}
+
+.bolded {
+  font-weight: bold;
 }
