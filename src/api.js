@@ -1,4 +1,4 @@
-const config = {
+export const config = {
     SITE_ADDR: "http://localhost:3000",
     API_ADDR: "http://localhost:8000",
 }

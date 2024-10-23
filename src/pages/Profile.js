@@ -50,11 +50,13 @@ export default function Profile() {
                         <div className="currency-label">
                             <span className="bolded">Admire Coins:</span>  {data.admirecoins}
                         </div>
+                        <div className="currency-description">Admire coins symbolize appreciation and love for nature and the environment.</div>
                     </div>
                     <div className="currency">
                         <img src="coins/carboncoin.png" alt="Carbon Coin"/>
                         <div className="currency-label">
                             <span className="bolded">Carbon Coins:</span>  {data.carboncoins}
+                            <div className="currency-description">Carbon coins symbolize actions that reduce carbon emissions and promote environmental sustainability.</div>
                         </div>
                     </div>
                 </div>
@@ -64,12 +66,14 @@ export default function Profile() {
                         <img src="coins/sustaincoin.png" alt="Sustain Coin"/>
                         <div className="currency-label">
                             <span className="bolded">Sustain Coins:</span>  {data.sustaincoins}
+                            <div className="currency-description">Sustain coins symbolize actions focused on reducing pollution and promoting sustainable practices.</div>
                         </div>
                     </div>
                     <div className="currency">
                         <img src="coins/unitycoin.png" alt="Unity Coin"/>
                         <div className="currency-label">
                             <span className="bolded">Unity Coins:</span>  {data.unitycoins}
+                            <div className="currency-description">Unity coins symbolize community involvement and collaboration in environmental efforts</div>
                         </div>
                     </div>
                 </div>

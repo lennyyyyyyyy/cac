@@ -54,7 +54,7 @@ export default function Login() {
 
           if (result !== 0) {
             login(result);
-            window.location.href = '/profile';
+            window.location.href = '/';
           }
           else
             newErrors.submit = 'Username or password is incorrect.';

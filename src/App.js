@@ -10,6 +10,7 @@ import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
 import Posts from './pages/Posts';
 import Post from './pages/Post';
+import Journal from './pages/Journal'
 import { BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import { Navigate } from 'react-router-dom';
 import { useAuth, AuthProvider } from './AuthProvider';
@@ -66,8 +67,9 @@ function App() {
 
             <Route path="/profile" element={<ProtectedRoute><Profile/></ProtectedRoute>}/>
             <Route path="/editprofile" element={<ProtectedRoute><EditProfile/></ProtectedRoute>}/>
-            <Route path="/posts" element={<Posts/>}/>
-            <Route path="/post/:id" element={<Post/>}/>
+            <Route path="/journal" element={<ProtectedRoute><Journal/></ProtectedRoute>}/>
+            <Route path="/posts" element={<ProtectedRoute><Posts/></ProtectedRoute>}/>
+            <Route path="/post/:id" element={<ProtectedRoute><Post/></ProtectedRoute>}/>
           </Routes>
           <Footer/>
       </Router>

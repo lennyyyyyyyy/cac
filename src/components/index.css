@@ -15,20 +15,33 @@
 
 .logo-text {
     font-family: Barlow semi condensed;
-    font-size: 35px;
+    font-size: 32px;
     font-weight: 500;
     text-decoration: none;
     /* color: rgb(10, 40, 20); */
 }
 
 img.logo-img {
-    width: 60px;
-    height: 60px;
-    margin-right: 10px;
+    width: 55px;
+    height: 55px;
+    margin-right: 3px;
 }
 
 .nav-wrapper {
     display: flex;
+}
+
+.footer-logo-text {
+    font-family: Barlow semi condensed;
+    font-size: 40px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+img.footer-logo-img {
+    width: 65px;
+    height: 65px;
+    margin-right: 5px;
 }
 
 .footer-wrapper {
@@ -36,13 +49,12 @@ img.logo-img {
 }
 
 .footer {
-    position: absolute;
     bottom: 0;
     display: flex;
     align-items: center;
     padding-top: 50px;
     padding-bottom: 50px;
-    background:rgb(160, 228, 191);
+    background:#d0eaf1;
     z-index: 10;
     width: 100%;
 }
@@ -88,6 +100,50 @@ nav {
     display: flex;
 }
 
+footer {
+    order: 2;
+    display: flex;
+    flex-direction: column;
+    margin-right: 15vw;
+    padding-left: 2.5vw;
+    border-left: 1px solid #b2b2b2;
+}
+
+.footer-not-bottom {
+    padding-bottom: 2vh;
+}
+
+.footer-header {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.footer-link {
+    display: inline-block;
+    font-size: 18px;
+    font-weight: 400;
+    text-decoration: none;
+    color: rgb(10, 40, 20);
+    cursor: pointer;
+    margin-right: auto;
+}
+
+.footer-link::after {
+    display: block;
+    background-color: #1a1a1a;
+    bottom: 2px;
+    content: "";
+    height: 1px;
+    left: 0;
+    position: relative;
+    transition: width .2s ease-out;
+    width: 0;
+}
+
+.footer-link:hover::after {
+    width: 100%;
+}
+
 .nav-link-wrapper {
     padding-right: 3vw; 
 }
@@ -125,34 +181,4 @@ nav {
 
 .nav-link:hover::after {
     width: 100%;
-}
-
-
-
-/* post and comment styles evan change this later */
-.post {
-    border: 1px solid rgb(160, 228, 191);
-    border-radius: 10px;
-    padding: 10px;
-    margin: 10px;
-    display: flex;
-    flex-direction: row;
-}
-
-.postvoting {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-shrink: 1;
-    margin:5px;
-}
-
-.postcontent {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    flex-grow: 1;
-    margin:5px;
 }

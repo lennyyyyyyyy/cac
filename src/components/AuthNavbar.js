@@ -10,7 +10,7 @@ export default function UnauthNavbar() {
         return darkBG.includes(location.pathname) ? 'logo-text logo-light' : 'logo-text logo-dark';
     }
     const logoImg = () => {
-        return darkBG.includes(location.pathname) ? 'b2n-logo-light2.png' : 'b2n-logo-transparent.png';
+        return darkBG.includes(location.pathname) ? '/b2n-logo-light2.png' : '/b2n-logo-transparent.png';
     }
 
     const navigate = useNavigate();
@@ -28,6 +28,8 @@ export default function UnauthNavbar() {
                     <span className={logoClass()}>BACKTONATURE</span>
                 </a>
                 <nav>
+                    <span className="nav-link-wrapper"><a className="nav-link" href="/journal">Journal</a></span>
+                    <span className="nav-link-wrapper"><a className="nav-link" href="/posts">Forum</a></span>
                     <span className="nav-link-wrapper"><a className="nav-link" href="/profile">Profile</a></span>
                     <span className="nav-link-wrapper"><div className="nav-link" onClick={handleLogout}>Logout</div></span>
                 </nav>

@@ -8,7 +8,7 @@ export default function UnauthNavbar() {
         return darkBG.includes(location.pathname) ? 'logo-text logo-light' : 'logo-text logo-dark';
     }
     const logoImg = () => {
-        return darkBG.includes(location.pathname) ? 'b2n-logo-light2.png' : 'b2n-logo-transparent.png';
+        return darkBG.includes(location.pathname) ? '/b2n-logo-light2.png' : '/b2n-logo-transparent.png';
     }
 
     return(<>
@@ -20,7 +20,7 @@ export default function UnauthNavbar() {
                 </a>
                 <nav>
                     <span className="nav-link-wrapper"><a className="nav-link" href="/login">Login</a></span>
-                    <span className="nav-link-wrapper"><a className="nav-link" href="signup">Sign Up</a></span>
+                    <span className="nav-link-wrapper"><a className="nav-link" href="/signup">Sign Up</a></span>
                 </nav>
             </header>
             {/* <div class="fader"></div> */}

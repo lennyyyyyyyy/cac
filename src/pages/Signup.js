@@ -65,7 +65,7 @@ export default function Signup() {
                 const id = await loginApi(formData);
                 if (id !== 0) {
                     login(id)
-                    window.location.href = 'profile';
+                    window.location.href = '/';
                 }
                 else
                     newErrors.submit = 'Something went wrong..';
