@@ -1,14 +1,3 @@
-<!-- 
-fetch('/php/adduser.php', {
-    method: 'POST',
-    body: JSON.stringify({
-        username: username,
-        password: password,
-    })
-}) 
-returns a boolean, true for success, false for failure
-each element has 'id', 'username', 'password', 'carboncoins', 'admirecoins', 'sustaincoins', 'utilitycoins'
--->
 <?php
     require 'config.php';
     $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);

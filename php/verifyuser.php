@@ -1,14 +1,3 @@
-<!-- 
-fetch('/php/verifyuser.php', {
-    method: 'POST',
-    body: JSON.stringify({
-        username: username,
-        password: password
-    })
-}) 
-verifies a username and password
-returns an int, userid for success, 0 for failure
--->
 <?php
     require 'config.php';
     $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
