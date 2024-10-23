@@ -50,14 +50,20 @@ export default function Login() {
         const newErrors = validateForm();
     
         if (Object.keys(newErrors).length === 0) { // if no errors, send data to backend
-          const result = await loginApi(formData);
+        //   const result = await loginApi(formData);
+          const result = 0
 
-          if (result !== 0) {
-            login(result);
-            window.location.href = '/';
-          }
-          else
-            newErrors.submit = 'Username or password is incorrect.';
+            if (result !== 0) {
+                login(result);
+                window.location.href = '/';
+            }
+            else {
+                newErrors.submit = 'Username or password is incorrect.';
+                setErrors((prevErrors) => ({
+                    ...prevErrors,
+                    ['submit']: newErrors,
+                }))
+            }
         }
     };
     
