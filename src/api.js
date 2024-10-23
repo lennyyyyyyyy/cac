@@ -1,6 +1,6 @@
 export const config = {
-    SITE_ADDR: "http://localhost:3000",
-    API_ADDR: "http://localhost:8000",
+    SITE_ADDR: "",
+    API_ADDR: "/php",
 }
 
 export async function getAccountData(data) {

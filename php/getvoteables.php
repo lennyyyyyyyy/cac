@@ -1,13 +1,3 @@
-<!-- 
-fetch('/php/getvoteables.php', {
-    method: 'POST',
-    body: JSON.stringify({
-        voteableid: 0 if getting all posts, otherwise id of post to get comments of that post,
-    })
-}) 
-returns a list of voteables(posts or comments) sorted by time
-each element has 'id', 'postid', 'title', 'body', 'userid', 'time', 'votes'
--->
 <?php
     require 'config.php';
     $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
@@ -19,5 +9,11 @@ each element has 'id', 'postid', 'title', 'body', 'userid', 'time', 'votes'
     $stmt->execute();
     $result = $stmt->get_result();
     $data = $result->fetch_all(MYSQLI_ASSOC);
+
+    foreach ($data as $key => $value) {
+        $query = $con->query("SELECT * FROM userinfo WHERE id = ". $value['userid']);
+        $data2 = $query->fetch_assoc();
+        $data[$key]['username'] = $data2['username'];
+    }
     echo json_encode($data);
 ?>

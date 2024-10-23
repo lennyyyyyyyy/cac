@@ -1,16 +1,3 @@
-<!-- 
-fetch('/php/addcoins.php', {
-    method: 'POST',
-    body: JSON.stringify({
-        id: user's id,
-        carboncoins: carbon coins to add,
-        admirecoins: admire coins to add,
-        sustaincoins: sustain coins to add,
-        unitycoins: unity coins to add,
-    })
-}) 
-returns a boolean, true for success, false for failure
--->
 <?php
     require 'config.php';
     $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);
@@ -28,6 +15,6 @@ returns a boolean, true for success, false for failure
     $sustaincoins += $post['sustaincoins'];
     $unitycoins += $post['unitycoins'];
     // send the new amounts back
-    $con->query("UPDATE userinfo SET carboncoins = $carboncoins, admirecoins = $admirecoins, sustaincoins = $sustaincoins, unitycoins = $unitycoins WHERE id = '" . $_SESSION['id'] . "'");
+    $con->query("UPDATE userinfo SET carboncoins = $carboncoins, admirecoins = $admirecoins, sustaincoins = $sustaincoins, unitycoins = $unitycoins WHERE id = '" . $post['id'] . "'");
     echo json_encode(true);
 ?>

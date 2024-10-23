@@ -5,11 +5,6 @@
         echo json_encode(false);
         exit('Failed to connect to MySQL: ' . mysqli_connect_error());
     }
-    $query = $con->query("SELECT * FROM userinfo WHERE username = '" . $post['username'] . "' AND password = '" . $post['password'] . "'");
-    if ($query->num_rows != 0) {
-        echo json_encode(false);
-    } else {
-        $stmt = $con->prepare("UPDATE userinfo SET username = ?, password = ? WHERE id = '" . $post['id'] . "'");
-        echo json_encode(true);
-    }
+    $stmt = $con->query("UPDATE userinfo SET username = '" . $post['username'] . "', password = '" . $post['password'] . "' WHERE id = '" . $post['id'] . "'");
+    echo json_encode(true);
 ?>
