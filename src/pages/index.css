@@ -107,14 +107,14 @@ body {
 
 .left-semicircle-bottom-right {
   position: absolute;
-  top: 150vh;
+  top: 110vh;
   right: 0;
   transform: translate(0, -50%);
   height: 16vw;
   width: 8vw;
   border-radius: 11vw 0 0 11vw;
   background-color: #ffc8dd;
-  z-index: 1000;
+  z-index: 1;
 }
 
 .left-semicircle-lower-right {
@@ -377,7 +377,7 @@ input[type="submit"]:focus {
 .postvoting {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   flex-shrink: 1;
   margin:5px;
@@ -387,9 +387,11 @@ input[type="submit"]:focus {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  /* align-items: center; */
   flex-grow: 1;
   margin:5px;
+  margin-left: 10px;
+  margin-top: 10px;
 }
 
 .post-not-voting {
@@ -415,6 +417,19 @@ input[type="submit"]:focus {
   margin-right: auto;
   font-size: 13pt;
   font-weight: 500;
+  margin-bottom: 0;
+  margin-top: 6px;
+}
+
+.comment-username {
+  top: 0;
+  left: 0;
+  margin-left: 10px;
+  margin-right: auto;
+  font-size: 13pt;
+  font-weight: 500;
+  margin-bottom: 0;
+  margin-top: 6px;
 }
 
 .posttime {
@@ -426,6 +441,7 @@ input[type="submit"]:focus {
   flex-direction: column;
   position: relative;
   padding: none;
+  margin: 0;
 }
 
 .posttime div {
@@ -435,27 +451,12 @@ input[type="submit"]:focus {
 }
 
 .posttitle {
+  display: inline-block;
   font-family: poppins,Helvetica,Arial,sans-serif;
   color: darkslategray;
   text-decoration: none;
   font-weight: bold;
   font-size: 25pt;
-}
-
-.posttitle::after {
-  display: block;
-  background-color: #1a1a1a;
-  bottom: -2px;
-  content: "";
-  height: 1px;
-  left: 0;
-  position: relative;
-  transition: width .2s ease-out;
-  width: 0;
-}
-
-.posttitle:hover::after {
-  width: 100%;
 }
 
 .postbutton {
@@ -507,12 +508,17 @@ div.no-hover:hover {
 .comment {
   background-color: #f9f8f6;
   padding: 8px 8px;
-  margin-bottom: 0.2vh;
+  margin-bottom: 10px;
   display: flex;
   flex-direction: row;
   width: 55vw;
   transition: 0.2s;
   border-bottom: 1px solid #b2b2b2;
+}
+
+.post-vote-count {
+  margin-top: 5px;
+  margin-bottom: 5px;
 }
 
 .comment:last-of-type {
@@ -522,7 +528,7 @@ div.no-hover:hover {
 .commentvoting {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   flex-shrink: 1;
   margin:5px;
@@ -531,10 +537,11 @@ div.no-hover:hover {
 .commentcontent {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  /* justify-content: center; */
+  /* align-items: center; */
   flex-grow: 1;
   margin:5px;
+
 }
 
 .comment-not-voting {
@@ -551,6 +558,12 @@ div.no-hover:hover {
   display: flex;
   flex-direction: row;
   width: 100%;
+}
+
+p.comment-text {
+  margin-top: 10px;
+  margin-left: 5px;
+  /* width: 100%; */
 }
 
 .comment-username {
@@ -571,6 +584,7 @@ div.no-hover:hover {
   flex-direction: column;
   position: relative;
   padding: none;
+  margin: 0;
 }
 
 .commenttime div {
@@ -668,3 +682,4 @@ input[type="submit"].comment-submit {
 .journal-date {
   font-size: 10pt;
 }
+

@@ -4,6 +4,7 @@ import UnauthNavbar from './components/UnauthNavbar';
 import AuthNavbar from './components/AuthNavbar';
 import Footer from "./components/Footer";
 import Home from './pages/Home';
+import AboutUs from './pages/AboutUs';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Profile from './pages/Profile';
@@ -62,6 +63,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home/>}/>
             <Route path="/home" element={<Home/>}/>
+            <Route path="/aboutus" element={<AboutUs/>}/>
             <Route path="/login" element={<UnProtectedRoute><Login/></UnProtectedRoute>}/>
             <Route path="/signup" element={<UnProtectedRoute><Signup/></UnProtectedRoute>}/>
 
