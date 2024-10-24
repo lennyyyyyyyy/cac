@@ -392,6 +392,11 @@ input[type="submit"]:focus {
   margin:5px;
   margin-left: 10px;
   margin-top: 10px;
+  text-decoration: none;
+}
+
+.post-body {
+  color: black;
 }
 
 .post-not-voting {
@@ -419,6 +424,24 @@ input[type="submit"]:focus {
   font-weight: 500;
   margin-bottom: 0;
   margin-top: 6px;
+  text-decoration: none;
+  color: black;
+}
+
+.post-username::after {
+  display: block;
+  background-color: #1a1a1a;
+  bottom: 2px;
+  content: "";
+  height: 1px;
+  left: 0;
+  position: relative;
+  transition: width .2s ease-out;
+  width: 0;
+}
+
+.post-username:hover::after {
+  width: 100%;
 }
 
 .comment-username {
@@ -430,6 +453,24 @@ input[type="submit"]:focus {
   font-weight: 500;
   margin-bottom: 0;
   margin-top: 6px;
+  text-decoration: none;
+  color: black;
+}
+
+.comment-username::after {
+  display: block;
+  background-color: #1a1a1a;
+  bottom: 2px;
+  content: "";
+  height: 1px;
+  left: 0;
+  position: relative;
+  transition: width .2s ease-out;
+  width: 0;
+}
+
+.comment-username:hover::after {
+  width: 100%;
 }
 
 .posttime {
@@ -667,7 +708,11 @@ input[type="submit"].comment-submit {
 
 .journal {
   /* border: 1px solid rgb(38, 109, 69); */
-  background-color: #f9f8f6;
+  /* background-image: url('/public/journal-bg2.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; */
+  line-height: 25px;
   border-radius: 14px;
   padding: 20px;
   margin-bottom: 4vh;
@@ -679,7 +724,18 @@ input[type="submit"].comment-submit {
   align-items: start;
 }
 
+.journal:last-of-type {
+  margin-bottom: 20vh;
+}
+
 .journal-date {
   font-size: 10pt;
 }
 
+.no-comments {
+  margin: 15px;
+}
+
+.page-description {
+  max-width: 60vw;
+}

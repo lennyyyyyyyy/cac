@@ -165,7 +165,7 @@ export default function Posts() {
         const newErrors = validateForm();
     
         if (Object.keys(newErrors).length === 0) {
-            const response = await fetch(config.API_ADDR + '/addvotable.php', {
+            const response = await fetch(config.API_ADDR + '/addvoteable.php', {
                 method: 'POST',
                 body: JSON.stringify(formData),
             });
@@ -217,19 +217,19 @@ export default function Posts() {
                         </svg>
                     </button>
                 </div>
-                <a className="post-not-voting" href={`./post/${i.id}`}>
+                <div className="post-not-voting" >
                     <div className="post-top">
-                        <h2 className="post-username">{i.username}</h2>
+                        <a className="post-username" href={`/profile/${i.userid}`}>{i.username}</a>
                         <h2 className='posttime'>
                             <div>{hours + ":" + minutes}</div>
                             <div>{month + "/" + day + "/" + year}</div>
                         </h2>
                     </div>
-                    <div className='postcontent'>
+                    <a className='postcontent' href={`./post/${i.id}`}>
                         <div className="posttitle">{i.title}</div>
-                        <p>{i.body}</p>
-                    </div>
-                </a>
+                        <p className="post-body">{i.body}</p>
+                    </a>
+                </div>
             </div>
         );
     }

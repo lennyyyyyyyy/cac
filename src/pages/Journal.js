@@ -151,7 +151,7 @@ export default function Journal() {
     return (<>
         <div className="centered-content">
             <h1 className="page-title">Journal</h1>
-            <span>Hello! How are you feeling today? Feel free to record any nature-related activities that you've done today!</span>
+            <span className="page-description">Hello! How are you feeling today? Feel free to record any nature-related activities that you've done, or just ramble about life!</span>
             <form className="add-comment-form" onSubmit={handleSubmit}>
                 <div className="comment-single-row">
                     <textarea

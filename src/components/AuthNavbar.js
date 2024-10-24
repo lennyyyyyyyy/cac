@@ -30,7 +30,7 @@ export default function UnauthNavbar() {
                 <nav>
                     <span className="nav-link-wrapper"><a className="nav-link" href="/journal">Journal</a></span>
                     <span className="nav-link-wrapper"><a className="nav-link" href="/posts">Forum</a></span>
-                    <span className="nav-link-wrapper"><a className="nav-link" href="/profile">Profile</a></span>
+                    <span className="nav-link-wrapper"><a className="nav-link" href="/profile/0">Profile</a></span>
                     <span className="nav-link-wrapper"><div className="nav-link" onClick={handleLogout}>Logout</div></span>
                 </nav>
             </header>

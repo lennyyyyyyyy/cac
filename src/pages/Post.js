@@ -166,7 +166,7 @@ export default function Post() {
         const newErrors = validateForm();
     
         if (Object.keys(newErrors).length === 0) {
-            const response = await fetch(config.API_ADDR + '/addvotable.php', {
+            const response = await fetch(config.API_ADDR + '/addvoteable.php', {
                 method: 'POST',
                 body: JSON.stringify(formData),
             });
@@ -223,7 +223,7 @@ export default function Post() {
                 </div>
                 <div className="comment-not-voting">
                     <div className="comment-top">
-                        <h2 className="comment-username">{i.username}</h2>
+                        <a className="comment-username" href={`/profile/${i.userid}`}>{i.username}</a>
                         <h2 className='commenttime'>
                             <div>{hours + ":" + minutes}</div>
                             <div>{month + "/" + day + "/" + year}</div>
@@ -235,6 +235,9 @@ export default function Post() {
                 </div>
             </div>
         );
+    }
+    if (comments.length === 0) {
+        stuff.push(<div className="no-comments">No comments at the moment...</div>)
     }
 
     const timestamp = post.time;
@@ -257,7 +260,7 @@ export default function Post() {
             </h1>
             <div className='post no-hover special' key={Post.id}>
                 <div className="post-top">
-                    <h2 className="post-username">{post.username}</h2>
+                    <a className="post-username" href={`/profile/${post.userid}`}>{post.username}</a>
                     <h2 className='posttime'>
                         <div>{hours + ":" + minutes}</div>
                         <div>{month + "/" + day + "/" + year}</div>

@@ -17,6 +17,7 @@
                 'postid' => 0,
                 'title' => 'post2',
                 'body' => 'body2',
+                'userid' => 2,
                 'username' => 'Evan Fan',
                 'time' => '2021-01-02 00:00:00',
                 'votes' => -10,
